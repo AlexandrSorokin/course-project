@@ -16,6 +16,29 @@ services:
     volumes:
       - mongodb-data:/data/db
 
+  postgres:
+    image: postgres:10.12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  mysql:
+    image: mysql:5.7.30
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_DATABASE: mysql_db
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+
 volumes:
   redis-data:
   mongodb-data:
+  postgres-data:
+  mysql-data:
